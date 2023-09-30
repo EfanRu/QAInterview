@@ -7,65 +7,48 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
-import java.net.MalformedURLException;
+import java.io.*;
 import java.net.URL;
-import java.time.Duration;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static utils.PropsHelper.getProps;
 
-public class MainTest {
+/**
+ * Testing Web and automation java patterns.
+ * Test from <a href="https://www.selenium.dev/documentation/webdriver/getting_started/first_script/">Selenium dev</a>
+ */
+public class SeleniumDevTest {
+    private final String seleniumDevUrl = "https://www.selenium.dev/selenium/web/web-form.html";
+
     /**
      * Test for check ChromeDriver is work.
-     * Test from <a href="https://www.selenium.dev/documentation/webdriver/getting_started/first_script/">Selenium dev</a>
      */
     @Test
-    public void testSelenium() {
+    public void testSeleniumConnect() {
         WebDriver driver = new ChromeDriver();
-        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+        driver.get(seleniumDevUrl);
 
         String title = driver.getTitle();
         assertEquals("Web form", title);
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
-
-        WebElement textBox = driver.findElement(By.name("my-text"));
-        WebElement submitButton = driver.findElement(By.cssSelector("button"));
-
-        textBox.sendKeys("Selenium");
-        submitButton.click();
-
-        WebElement message = driver.findElement(By.id("message"));
-        String value = message.getText();
-        assertEquals("Received!", value);
 
         driver.quit();
     }
 
     /**
      * Test for check ChromeDriver connect to Selenoid is work.
-     * Test from <a href="https://www.selenium.dev/documentation/webdriver/getting_started/first_script/">Selenium dev</a>
      */
     @Test
-    public void testSeleniumInSelenoid() throws MalformedURLException {
-        DesiredCapabilities caps = new DesiredCapabilities("chrome", "102.0", Platform.LINUX);
-        WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub/"), caps, false);
-        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+    public void testSeleniumInSelenoid() throws IOException {
+        final String selenoidUrl = getProps().getProperty("selenoid.webDriver.url");
+        final String selenoidBrowserName = getProps().getProperty("selenoid.webDriver.browserName");
+        final String selenoidBrowserVersion = getProps().getProperty("selenoid.webDriver.browserVersion");
+        DesiredCapabilities caps = new DesiredCapabilities(selenoidBrowserName, selenoidBrowserVersion, Platform.LINUX);
+        WebDriver driver = new RemoteWebDriver(new URL(selenoidUrl), caps, false);
+        driver.get(seleniumDevUrl);
 
         String title = driver.getTitle();
         assertEquals("Web form", title);
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
-
-        WebElement textBox = driver.findElement(By.name("my-text"));
-        WebElement submitButton = driver.findElement(By.cssSelector("button"));
-
-        textBox.sendKeys("Selenium");
-        submitButton.click();
-
-        WebElement message = driver.findElement(By.id("message"));
-        String value = message.getText();
-        assertEquals("Received!", value);
 
         driver.quit();
     }
@@ -83,18 +66,14 @@ public class MainTest {
     @Test
     public void brokenTestSelenium() {
         WebDriver driver = new ChromeDriver();
-        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
-
+        driver.get(seleniumDevUrl);
         List<WebElement> textBoxList = driver.findElements(By.xpath("//*[@id=\"my-text-id\"]"));
         WebElement submitButton = driver.findElement(By.xpath("//button"));
-
         textBoxList.forEach(t -> t.sendKeys("Selenium"));
         submitButton.click();
-
         WebElement message = driver.findElement(By.id("message"));
         String value = message.getText();
         assertEquals("Received!", value);
-
         driver.quit();
     }
 }
