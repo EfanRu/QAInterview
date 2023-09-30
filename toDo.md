@@ -4,3 +4,4 @@ To do list:
 - create server;
 - check local all test work;
 - check remote all test work;
+- add allure support;

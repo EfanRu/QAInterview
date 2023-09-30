@@ -16,7 +16,7 @@ import static utils.PropsHelper.getProps;
 
 /**
  * Testing Web and automation java patterns.
- * Test from <a href="https://www.selenium.dev/documentation/webdriver/getting_started/first_script/">Selenium dev</a>
+ * @see <a href="https://www.selenium.dev/documentation/webdriver/getting_started/first_script/">Selenium dev</a>
  */
 public class SeleniumDevTest {
     private final String seleniumDevUrl = "https://www.selenium.dev/selenium/web/web-form.html";
