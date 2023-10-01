@@ -24,4 +24,13 @@ public class DBTest {
         int count = new DBHelper().execCountSqlQuery("");
         Assert.assertEquals(count, 599);
     }
+
+    /**
+     * Task: write select counts of customer who lives in Moscow
+     */
+    @Test
+    public void checkSelectQuery2() {
+        int count = new DBHelper().execCountSqlQuery("");
+        Assert.assertEquals(count, 1);
+    }
 }
