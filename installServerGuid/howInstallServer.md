@@ -11,12 +11,14 @@ systemctl restart postgresql-15.service
 
 
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO user;
+    Upper grand is needed for non-administrative user so that the DB is not broken and it does not have to be deployed from scratch.
 
 download and load sample database
 https://www.postgresqltutorial.com/postgresql-getting-started/load-postgresql-sample-database/
 https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
 https://www.pgadmin.org/download/pgadmin-4-apt/
 
+Sample of database will be export with PgAdmin tool in clear DB.
 
 # Install docker
 https://redos.red-soft.ru/base/arm/arm-other/docker-install/
