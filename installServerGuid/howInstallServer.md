@@ -3,22 +3,38 @@
 
 # Install psql
 https://redos.red-soft.ru/base/server-configuring/dbms/install-postgresql/
+    - create postgres user
+    - fix remote connect to postgres
+    - restart postgres
+```
+dnf install postgresql15-server -y
+postgresql-15-setup initdb
+systemctl enable postgresql-15.service --now
+systemctl status postgresql-15.service
 
-create postgres user
-fix remote connect to postgres
-
+su - postgres
+psql
+ALTER USER postgres WITH ENCRYPTED PASSWORD 'yourpassword';
+create database dvdrental;
+exit
+exit
+nano /var/lib/pgsql/15/data/postgresql.conf -> # listen_addresses = 'localhost' -> listen_addresses = '*' 
+nano /var/lib/pgsql/15/data/pg_hba.conf + host all all 0.0.0.0/0 md5
 systemctl restart postgresql-15.service
+
+```
 
 
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO user;
     Upper grand is needed for non-administrative user so that the DB is not broken and it does not have to be deployed from scratch.
 
 download and load sample database
+https://disk.yandex.ru/d/KI1tMlZlG7ZtXQ
 https://www.postgresqltutorial.com/postgresql-getting-started/load-postgresql-sample-database/
 https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
 https://www.pgadmin.org/download/pgadmin-4-apt/
 
-Sample of database will be export with PgAdmin tool in clear DB.
+Sample of database will be restored with PgAdmin tool in DB dvdretal.
 
 # Install docker
 https://redos.red-soft.ru/base/arm/arm-other/docker-install/
