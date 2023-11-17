@@ -28,7 +28,7 @@ public class APITest {
     }
 
     /**
-     * With token from {@link #checkWorking()} get one book and check with Assert fist name
+     * Take any one book and check with Assert first name.
      * Info {@link # http://restful-booker.herokuapp.com/apidoc/index.html}
      */
     @Test
