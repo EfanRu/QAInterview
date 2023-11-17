@@ -56,7 +56,7 @@ public class SeleniumDevTest {
     /**
      * Broken test. Fix it!
      * Task:
-     * 1. Check that all input fields work according to their description.
+     * 1. Check that all input fields input text.
      * 2. Create 1 bug report.
      * 3. How need fix this test?
      * 4. What checks would you add for input fields?
