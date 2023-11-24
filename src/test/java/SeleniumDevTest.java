@@ -57,11 +57,10 @@ public class SeleniumDevTest {
      * Broken test. Fix it!
      * Task:
      * 1. Check that all input fields input text.
-     * 2. Create 1 bug report.
-     * 3. How need fix this test?
-     * 4. What checks would you add for input fields?
-     * 5. Rewrite this test with patterns (PageObject, Facade and so on).
-     * 6. Are you fixed quote from WebDriver? How did close him if test failed?
+     * 2. How need fix this test?
+     * 3. What checks would you add for input fields? Disable input? Read only inputs?
+     * 4. Rewrite this test with patterns (PageObject, Facade and so on).
+     * 5. Are you fixed quote from WebDriver? How did close him if test failed?
      */
     @Test
     public void brokenTestSelenium() {
