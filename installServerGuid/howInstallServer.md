@@ -16,6 +16,10 @@ su - postgres
 psql
 ALTER USER postgres WITH ENCRYPTED PASSWORD 'yourpassword';
 create database dvdrental;
+create user aqa with password 'Toster2023';
+grant select on all tables in schema public to aqa;
+grant execute on all functions in schema public to aqa;
+GRANT pg_read_all_data TO aqa;
 exit
 exit
 nano /var/lib/pgsql/15/data/postgresql.conf -> # listen_addresses = 'localhost' -> listen_addresses = '*' 
