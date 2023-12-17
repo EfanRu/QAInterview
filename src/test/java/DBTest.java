@@ -17,7 +17,7 @@ public class DBTest {
     }
 
     /**
-     * Task: write simple select counts of customer where email contains 'customer.org'
+     * Task: write a select query of the counts of customer whose email contains 'customer.org'
      */
     @Test
     public void checkSelectQuery() {
@@ -26,10 +26,21 @@ public class DBTest {
     }
 
     /**
-     * Task: write select counts of customer who lives in Moscow
+     * Task: write a select query of the counts of customer whose lives in Moscow
      */
     @Test
     public void checkSelectQuery2() {
+        int count = new DBHelper().execCountSqlQuery("");
+        Assert.assertEquals(count, 1);
+    }
+
+    /**
+     * Task: write a select query of the counts of staff whose username does not begin with M
+     * and whose store is located in a city starting with M
+     * The best practice is written query in database tools.
+     */
+    @Test
+    public void checkSelectQuery3() {
         int count = new DBHelper().execCountSqlQuery("");
         Assert.assertEquals(count, 1);
     }
