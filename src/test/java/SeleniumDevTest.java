@@ -55,6 +55,8 @@ public class SeleniumDevTest {
 
     /**
      * Broken test. Fix it!
+     * Test case:
+     * Check that all active input fields are working correctly, and inactive ones do not accept input.
      * Task:
      * 1. Check that all input fields input text.
      * 2. How need fix this test?
