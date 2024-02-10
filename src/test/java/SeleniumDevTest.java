@@ -68,6 +68,7 @@ public class SeleniumDevTest {
     public void brokenTestSelenium() {
         WebDriver driver = new ChromeDriver();
         driver.get(seleniumDevUrl);
+
         List<WebElement> textBoxList = driver.findElements(By.xpath("//*[@id=\"my-text-id\"]"));
         WebElement submitButton = driver.findElement(By.xpath("//button"));
         textBoxList.forEach(t -> t.sendKeys("Selenium"));
@@ -75,6 +76,7 @@ public class SeleniumDevTest {
         WebElement message = driver.findElement(By.id("message"));
         String value = message.getText();
         assertEquals("Received!", value);
+
         driver.quit();
     }
 }

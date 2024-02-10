@@ -1,0 +1,24 @@
+{
+  "cards": [
+    {
+      "cardId": "18effd75-c0e4-4eee-a9b8-ff3eb0434fd0",
+      "openDate": "11.01.2024",
+      "balance": "100,00",
+      "subject": [
+        "Inactive",
+        "Blocked"
+      ],
+      "isActive": false
+    },
+    {
+      "cardId": "4ccf5f12-20ab-4c41-a9e6-a8dc93a025d8",
+      "openDate": "12.01.2024",
+      "balance": "109990,00",
+      "subject": [
+        "MIR",
+        "Active"
+      ],
+      "isActive": false
+    }
+  ]
+}

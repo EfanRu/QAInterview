@@ -1,0 +1,14 @@
+{
+  "name": "My stub test.",
+  "request": {
+    "method": "GET",
+    "url": "/test"
+  },
+  "response": {
+    "status": 200,
+    "body": "Hello wireMock!",
+    "headers": {
+      "Content-Type": "text/plain"
+    }
+  }
+}

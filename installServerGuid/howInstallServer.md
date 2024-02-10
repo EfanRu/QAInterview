@@ -43,7 +43,7 @@ Sample of database will be restored with PgAdmin tool in DB dvdretal.
 # Install docker
 https://redos.red-soft.ru/base/arm/arm-other/docker-install/
 
-# Install selenoid
+# Run selenoid & selenoid-ui in docker
 sudo docker pull selenoid/chrome:116.0
 sudo docker pull aerokube/selenoid
 sudo docker pull aerokube/selenoid-ui
@@ -56,3 +56,12 @@ wget https://github.com/aerokube/selenoid/releases/download/1.11.0/selenoid_linu
 sudo chmod +x selenoid_linux_amd64
 
 docker run -d --name selenoid-ui -p 8080:8080 aerokube/selenoid-ui --selenoid-uri http://localhost:4444
+
+# Run wireMock in docker
+docker run --it --rm -p 8081:8081 --name wiremock \
+    -v $PWD:/var/wiremock/extensions wiremock/wiremock:2.33.1 \
+    --extensions org.wiremock.webhooks.Webhooks \
+    --global-response-templating \
+    --max-request-journal-entries 1000 \
+    --async-response-enabled true \
+    --port 8081
