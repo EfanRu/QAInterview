@@ -3,6 +3,8 @@ package utils;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 
+import java.util.UUID;
+
 import static io.restassured.RestAssured.given;
 
 public class WireMockHelper {

@@ -1,3 +1,4 @@
+import com.github.tomakehurst.wiremock.client.WireMock;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.http.Method;
@@ -15,11 +16,19 @@ import static io.restassured.RestAssured.given;
 import static utils.PropsHelper.getProps;
 
 public class APITest {
+    final int wireMockPort = Integer.parseInt(getProps().getProperty("wireMock.port"));
+    final String wireMockUrl = getProps().getProperty("wireMock.url");
+    WireMock wireMock = new WireMock(wireMockUrl, wireMockPort);
+
+    public APITest() throws IOException {
+    }
+
     @BeforeClass
     public void setup() {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
         RestAssured.port = 443;
     }
+
     @Test
     public void checkWorking() {
         Response response = given()
@@ -45,8 +54,8 @@ public class APITest {
 
     @Test
     public void testWireMock() throws IOException {
-        RestAssured.baseURI = getProps().getProperty("wireMock.url");;
-        RestAssured.port = Integer.parseInt(getProps().getProperty("wireMock.port"));
+        RestAssured.baseURI = wireMockUrl;
+        RestAssured.port = wireMockPort;
         File stubBody = new File("src/test/resources/mockBody/testWireMock.json");
 
         Response mockResp = given()
@@ -70,14 +79,15 @@ public class APITest {
     /**
      * Create stub in WireMock for method GET URI /client/cards with mockBody {@link /src/test/resource/mockBody/clientCards.json}
      * Validate values:
-     *  - openDate date pattern;
-     *  - balance amount is string;
-     *  - subject contains item "Active";
-     *  - isActive flag true.
+     * - openDate date pattern;
+     * - balance amount is string;
+     * - subject contains item "Active";
+     * - isActive flag true.
+     * Hard task: use WireMock methods
      */
     @Test
     public void test2() {
-        File stubBody = new File("src/test/resources/mockBody/testWireMock.json");
+        File stubBody = new File("src/test/resources/mockBody/clientCards.json");
 
     }
 }
