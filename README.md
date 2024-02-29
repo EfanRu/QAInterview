@@ -1,6 +1,6 @@
 # AQAInterview 
 ### For interview aqa engineers.
-
+Commit in my repo
 This is the first sample of the pen. Ideally, this project should be deployed via ansible playbook in the cloud, but so far there is no need and interest in the project, I do it with my hands, and then I turn off the server so as not to spend money in the cloud.
 
 Web interview is conducted in [SeleniumDevTest.java](src%2Ftest%2Fjava%2FSeleniumDevTest.java) . Here are the connection tests with selenium.dev with local chrome and selenoid on server, as well as one simple but broken test for selenium.dev. A broken task will show us how people think and debug problems. The tasks are given in the annotations to the test.
