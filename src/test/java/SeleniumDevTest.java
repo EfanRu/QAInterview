@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -39,6 +40,7 @@ public class SeleniumDevTest {
      * Test for check ChromeDriver connect to Selenoid is work.
      */
     @Test
+    @Step
     public void testSeleniumInSelenoid() throws IOException {
         final String selenoidUrl = getProps().getProperty("selenoid.webDriver.url");
         final String selenoidBrowserName = getProps().getProperty("selenoid.webDriver.browserName");
